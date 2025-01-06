@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dark Mode Toggle with Sidebar</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Boxicons CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet">
+    <style>
+        /* General Dark Mode Styling */
+        body,
+        .content {
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        /* Dark Mode Styles */
+        .dark-mode {
+            background-color: #2d2d2d;
+            /* Dark background for the body */
+            color: #e0e0e0;
+            /* Light text color for body */
+        }
+
+        .dark-mode .sidebar {
+            background-color: #232323;
+            /* Dark sidebar */
+            color: #e0e0e0;
+        }
+
+        .dark-mode .sidebar a {
+            color: #b0b0b0;
+            /* Lighter links in the sidebar */
+        }
+
+        .dark-mode .sidebar a:hover {
+            background-color: #444;
+            /* Darker on hover */
+            color: #fff;
+        }
+
+        .dark-mode .form-input,
+        .dark-mode .form-button {
+            background-color: #444;
+            /* Dark background for input and button */
+            color: #fff;
+            border-color: #555;
+            /* Darker border */
+        }
+
+        .dark-mode .form-input:focus {
+            border-color: #888;
+            /* Focused input border */
+        }
+
+        /* Dark Mode Card for Form */
+        .dark-mode .card {
+            background-color: #444;
+            /* Dark background for card */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+            /* Darker shadow for card */
+        }
+
+        /* Header in Dark Mode */
+        .dark-mode .header {
+            color: #ffffff;
+            /* White text in the header */
+        }
+
+        /* Light Mode Styles (Default) */
+        .sidebar {
+            background-color: #fff;
+            color: #333;
+        }
+
+        .sidebar a {
+            color: #333;
+        }
+
+        /* Text Fields in Non-Dark Mode */
+        .form-input {
+            background-color: #f9f9f9;
+            /* Light gray background for non-dark mode */
+            color: #333;
+            border: 1px solid #ddd;
+            /* Light border */
+            padding: 0.75rem 1rem;
+            border-radius: 8px;
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+        }
+
+        .form-input:focus {
+            background-color: #fff;
+            /* White background when focused */
+            border-color: #aaa;
+            /* Lighter border on focus */
+            outline: none;
+        }
+
+        /* Dark Mode Text Fields (Do Not Change Background to White) */
+        .dark-mode .form-input {
+            background-color: #444;
+            /* Keep dark background in dark mode */
+            border-color: #555;
+            /* Darker border in dark mode */
+        }
+
+        .dark-mode .form-input:focus {
+            background-color: #444;
+            /* Keep background dark when focused */
+            border-color: #888;
+            /* Lighter border on focus */
+        }
+
+        /* Dark Mode Styles for Grid Table */
+        .dark-mode table {
+            background-color: #444;
+            /* Dark background for the table */
+            border-color: #555;
+            /* Border color for table */
+            color: #e0e0e0;
+            /* Text color for table */
+        }
+
+        .dark-mode table th {
+            background-color: #555;
+            /* Darker background for table headers */
+            color: #e0e0e0;
+            /* Light text color for headers */
+            border-color: #666;
+            /* Darker border for headers */
+        }
+
+        .dark-mode table td {
+            background-color: #444;
+            /* Dark background for table cells */
+            color: #e0e0e0;
+            /* Light text color for cells */
+            border-color: #555;
+            /* Border color for cells */
+        }
+
+        .dark-mode table tbody tr:hover {
+            background-color: #555;
+            /* Highlighted row in dark mode */
+        }
+
+        /* Dark Mode for Input Fields in Grid */
+        .dark-mode input[type="text"] {
+            background-color: #444;
+            /* Dark background for input */
+            color: #e0e0e0;
+            /* Light text for input */
+            border: 1px solid #555;
+            /* Darker border for input */
+        }
+
+        .dark-mode input[type="text"]:focus {
+            border-color: #888;
+            /* Focus border in dark mode */
+            box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+            /* Focus shadow */
+        }
+
+        /* Dark Mode for Buttons in Grid */
+        .dark-mode button {
+            background-color: #555;
+            /* Dark background for buttons */
+            color: #e0e0e0;
+            /* Light text color for buttons */
+            border: 1px solid #666;
+            /* Button border color */
+        }
+
+        .dark-mode button:hover {
+            background-color: #666;
+            /* Lighter button background on hover */
+        }
+
+        /* Dark Mode Empty State Text */
+        .dark-mode td.text-gray-500 {
+            color: #888;
+            /* Subdued text color for empty state */
+        }
+
+        /* Improved focus state for better accessibility */
+        .form-input:focus {
+            box-shadow: 0 0 5px rgba(56, 103, 214, 0.7);
+        }
+
+        /* Adjusted background for content area in dark mode */
+        .dark-mode .content {
+            background-color: #333;
+            /* Dark background for content */
+            color: #e0e0e0;
+            /* Light text color for content */
+        }
+
+        /* Submenu Styling */
+        .submenu {
+            display: none;
+            padding-left: 16px;
+        }
+
+        .submenu.open {
+            display: block;
+        }
+
+        /* Sidebar Icon Styling */
+        .sidebar .menu i {
+            margin-right: 10px;
+        }
+
+        .submenu-toggle i {
+            transition: transform 0.3s ease;
+        }
+
+        .submenu-toggle.open i {
+            transform: rotate(180deg);
+        }
+
+        /* Card Styling for the Form */
+        .card {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+        }
+
+        /* Fix for content background color and full screen height */
+        .content {
+            min-height: 100vh;
+            /* Ensure content section takes full height */
+            background-color: inherit;
+            /* Inherit background color */
+            color: inherit;
+            /* Inherit text color */
+        }
+    </style>
+</head>
+
+<body class="bg-gray-100">
+
+    <!-- Sidebar -->
+    <div class="sidebar w-64 h-screen fixed top-0 left-0 z-10">
+        <div class="flex justify-between items-center py-6 px-4">
+            <span class="text-2xl font-bold text-indigo-700">Sidebar</span>
+            <!-- Dark Mode Toggle Button -->
+            <button id="dark-mode-toggle" class="text-xl bg-transparent p-2 rounded-full">
+                <span id="dark-mode-icon">🌙</span>
+            </button>
+        </div>
+
+        <div class="px-4 py-6">
+            <a href="#" class="block py-2 px-4 hover:bg-indigo-600 rounded-md">
+                <i class="bx bx-home"></i> Dashboard
+            </a>
+
+            <!-- Users Menu with Submenus -->
+            <div class="menu">
+                <button class="block w-full py-2 px-4 text-left hover:bg-indigo-600 rounded-md submenu-toggle">
+                    <i class="bx bx-user"></i> Users <i class="bx bx-chevron-down float-right"></i>
+                </button>
+                <div class="submenu">
+                    <a href="#" class="block py-2 px-4 hover:bg-indigo-500 rounded-md">User List</a>
+                    <a href="#" class="block py-2 px-4 hover:bg-indigo-500 rounded-md">Add User</a>
+
+                    <!-- Nested Submenu -->
+                    <button class="block w-full py-2 px-4 text-left hover:bg-indigo-500 rounded-md submenu-toggle">
+                        <i class="bx bx-lock"></i> Roles <i class="bx bx-chevron-down float-right"></i>
+                    </button>
+                    <div class="submenu">
+                        <a href="#" class="block py-2 px-4 hover:bg-indigo-400 rounded-md">Admin</a>
+                        <a href="#" class="block py-2 px-4 hover:bg-indigo-400 rounded-md">Editor</a>
+                        <a href="#" class="block py-2 px-4 hover:bg-indigo-400 rounded-md">Viewer</a>
+                    </div>
+                </div>
+            </div>
+
+            <a href="#" class="block py-2 px-4 hover:bg-indigo-600 rounded-md">
+                <i class="bx bx-cog"></i> Settings
+            </a>
+            <a href="#" class="block py-2 px-4 hover:bg-indigo-600 rounded-md">
+                <i class="bx bx-log-out"></i> Logout
+            </a>
+        </div>
+    </div>
+
+    <!-- Main Content Area -->
+    <div class="ml-64 p-8 content">
+        <h1 class="text-3xl font-bold header">Grid Form</h1>
+
+        <div class="card mt-6">
+            <!-- Search Input Section -->
+            <div class="flex justify-end mb-4">
+                <div class="flex space-x-2">
+                    <input type="text" id="search" name="search" placeholder="Search"
+                        class="w-64 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-200">
+                    <button type="button" name="resetButton"
+                        class="flex items-center px-4 py-2 border border-gray-300 text-gray-600 bg-white hover:bg-gray-100 rounded-md reset-grid-button"
+                        title="Reset">
+                        <i class="bx bx-refresh"></i>
+                    </button>
+                    <button type="button" name="searchButton"
+                        class="flex items-center px-4 py-2 text-white bg-indigo-600 hover:bg-indigo-700 rounded-md search-grid-button"
+                        title="Search">
+                        <i class="bx bx-search-alt"></i>
+                    </button>
+                </div>
+            </div>
+
+
+
+            <!-- Table Section -->
+            <div class="overflow-x-auto">
+                <table class="min-w-full table-auto border-collapse border border-gray-300">
+                    <thead>
+                        <tr>
+                            <th class="px-4 py-2 border border-gray-300">
+                                <input type="text" id="name" name="name" placeholder="Name" maxlength="64"
+                                    class="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-200">
+                            </th>
+                            <th class="text-center px-4 py-2 border border-gray-300">
+                                <button type="button"
+                                    class="flex items-center px-4 py-2 text-white bg-blue-500 hover:bg-blue-600 rounded-md ml-4 create-grid-button">
+                                    <i class="bx bx-plus mr-2"></i>
+                                    Create
+                                </button>
+                            </th>
+                        </tr>
+                        <tr class="bg-indigo-50">
+                            <th class="text-left px-4 py-2 border border-gray-300">
+                                Name
+                            </th>
+                            <th class="text-center px-4 py-2 border border-gray-300 w-40">#</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tableBody">
+
+                        <tr id='row-1' class="hover:bg-gray-100">
+                            <td class="px-4 py-2 border border-gray-300">
+                                <input type="text" name='name[]' id='name-1' value='Name' placeholder="Name"
+                                    maxlength="64"
+                                    class="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-200">
+                            </td>
+                            <td class="text-center px-4 py-2 border border-gray-300">
+                                <div class="flex justify-center space-x-2">
+
+                                    <button type="button"
+                                        class="px-4 py-2 text-white bg-yellow-500 hover:bg-yellow-600 rounded-md update-grid-button"
+                                        data-key="" title="Update">
+                                        <i class="bx bx-edit"></i>
+                                    </button>
+
+
+                                    <button type="button"
+                                        class="px-4 py-2 text-white bg-red-500 hover:bg-red-600 rounded-md remove-grid-button"
+                                        data-key="" title="Delete">
+                                        <i class="bx bx-message-square-minus"></i>
+                                    </button>
+
+                                </div>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td colspan="2" class="px-4 py-2 text-center text-gray-500">
+                                No Record
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        const darkModeToggle = document.getElementById("dark-mode-toggle");
+        const darkModeIcon = document.getElementById("dark-mode-icon");
+
+        darkModeToggle.addEventListener("click", () => {
+            document.body.classList.toggle("dark-mode");
+            darkModeIcon.textContent = document.body.classList.contains("dark-mode") ? "🌞" : "🌙";
+        });
+
+        const submenuToggles = document.querySelectorAll(".submenu-toggle");
+        submenuToggles.forEach(toggle => {
+            toggle.addEventListener("click", () => {
+                toggle.classList.toggle("open");
+                const submenu = toggle.nextElementSibling;
+                submenu.classList.toggle("open");
+            });
+        });
+    </script>
+</body>
+
+</html>
