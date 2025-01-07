@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dark Mode Toggle with Sidebar</title>
+  <link rel="stylesheet" href="../dist/css/main.css">
+  <link rel="stylesheet" href="../dist/css/dark.css">
+  <link rel="stylesheet" href="../dist/css/output.css">
+  <!-- Boxicons CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet">
+</head>
+
+<body>
+ 
+    <!-- Sidebar -->
+    <div id="sidebar" class="sidebar w-64 h-screen fixed top-0 left-0 z-10">
+      <div class="flex justify-between items-center py-6 px-4">
+        <span class="text-2xl font-bold text-indigo-700">Rebels</span>
+        <!-- Dark Mode Toggle Button -->
+        <button id="dark-mode-toggle"
+          class="p-2 bg-transparent hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-md">
+          <span id="dark-mode-icon">🌙</span>
+        </button>
+      </div>
+
+      <div class="px-4 py-6">
+        <a href="#" class="block py-2 px-4 hover:bg-indigo-600 rounded-md">
+          <i class="bx bx-home"></i> Dashboard
+        </a>
+
+        <!-- Users Menu with Submenus -->
+        <div class="menu">
+          <button class="block w-full py-2 px-4 text-left hover:bg-indigo-600 rounded-md submenu-toggle">
+            <i class="bx bx-user"></i> Users <i class="bx bx-chevron-down float-right"></i>
+          </button>
+          <div class="submenu">
+            <a href="#" class="block py-2 px-4 hover:bg-indigo-500 rounded-md">User List</a>
+            <a href="#" class="block py-2 px-4 hover:bg-indigo-500 rounded-md">Add User</a>
+
+            <!-- Nested Submenu -->
+            <button class="block w-full py-2 px-4 text-left hover:bg-indigo-500 rounded-md submenu-toggle">
+              <i class="bx bx-lock"></i> Roles <i class="bx bx-chevron-down float-right"></i>
+            </button>
+            <div class="submenu">
+              <a href="#" class="block py-2 px-4 hover:bg-indigo-400 rounded-md">Admin</a>
+              <a href="#" class="block py-2 px-4 hover:bg-indigo-400 rounded-md">Editor</a>
+              <a href="#" class="block py-2 px-4 hover:bg-indigo-400 rounded-md">Viewer</a>
+            </div>
+          </div>
+        </div>
+
+        <a href="#" class="block py-2 px-4 hover:bg-indigo-600 rounded-md">
+          <i class="bx bx-cog"></i> Settings
+        </a>
+        <a href="#" class="block py-2 px-4 hover:bg-indigo-600 rounded-md">
+          <i class="bx bx-log-out"></i> Logout
+        </a>
+      </div>
+    </div>
+
+    <!-- Main Content Area -->
+    <div id="content" class="ml-64 p-8 content">
+      <button id="toggleSidebar"
+            class="p-2 bg-transparent hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-md">
+            <i id="toggleIcon" class="bx bx-menu text-2xl"></i>
+        </button>
+      <!-- Card Container for the Invoice Form -->
+      <div class="card mt-6">
+        <form>
+          <!-- Customer Info -->
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+              <label for="customer_name" class="block text-sm form-label">Customer Name</label>
+              <input type="text" id="customer_name" class="mt-2 p-3 w-full form-input rounded-md">
+            </div>
+            <div>
+              <label for="customer_email" class="block text-sm form-label">Customer Email</label>
+              <input type="email" id="customer_email" class="mt-2 p-3 w-full form-input rounded-md">
+            </div>
+          </div>
+
+          <!-- Invoice Number -->
+          <div class="mt-6">
+            <label for="invoice_number" class="block text-sm form-label">Invoice Number</label>
+            <input type="text" id="invoice_number" class="mt-2 p-3 w-full form-input rounded-md">
+          </div>
+
+          <!-- Items Section -->
+          <div class="mt-6">
+            <label for="invoice_items" class="block text-sm form-label">Invoice Items</label>
+            <textarea id="invoice_items" rows="4" class="mt-2 p-3 w-full form-input rounded-md"></textarea>
+          </div>
+
+          <!-- Total Amount -->
+          <div class="mt-6">
+            <label for="total_amount" class="block text-sm form-label">Total Amount</label>
+            <input type="number" id="total_amount" class="mt-2 p-3 w-full form-input rounded-md">
+          </div>
+
+          <!-- Submit Button -->
+          <div class="mt-6 text-right">
+            <button type="submit"
+              class="bg-indigo-600 text-white py-2 px-4 rounded-md hover:bg-indigo-700 form-button">Submit</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  
+  <script src="../dist/js/main.js"></script>
+</body>
+
+</html>

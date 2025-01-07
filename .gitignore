@@ -1,0 +1,28 @@
+# Node modules
+node_modules/
+
+# Environment files
+.env
+
+# Logs
+logs/
+*.log
+
+# Dependency directories
+bower_components/
+
+# Build output
+#/dist ## this okay because our main target to get the css for aspx rebels
+/build
+
+# IDE configuration files
+.vscode/
+.idea/
+
+# System files
+.DS_Store
+Thumbs.db
+.macos
+
+# OS-generated files
+ehthumbs.db

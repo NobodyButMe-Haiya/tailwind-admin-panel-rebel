@@ -1,0 +1,113 @@
+/* General Dark Mode Styling */
+html, body {
+    margin: 0;
+    padding: 0;
+}
+body,
+.content {
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+body, #content {
+    overflow: hidden;
+    position: relative;
+}
+.content {
+    top: 0;
+    transition: margin-left 0.3s ease-in-out;
+}
+.sidebar {
+    width: 16rem; 
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Text Fields in Non-Dark Mode */
+.form-input {
+    background-color: #f9f9f9;
+    /* Light gray background for non-dark mode */
+    color: #333;
+    border: 1px solid #ddd;
+    /* Light border */
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.form-input:focus {
+    background-color: #fff;
+    /* White background when focused */
+    border-color: #aaa;
+    /* Lighter border on focus */
+    outline: none;
+}
+
+tbody tr {
+    background-color: white;
+}
+tbody tr:nth-child(even) {
+    background-color: #f9fafb; /* Tailwind's gray-100 */
+}
+
+/* Light Mode Styles (Default) */
+.sidebar {
+    background-color: #fff;
+    color: #333;
+}
+
+.sidebar a {
+    color: #333;
+}
+
+/* Improved focus state for better accessibility */
+.form-input:focus {
+    box-shadow: 0 0 5px rgba(56, 103, 214, 0.7);
+}
+
+/* Adjusted background for content area in dark mode */
+.dark-mode .content {
+    background-color: #333;
+    /* Dark background for content */
+    color: #e0e0e0;
+    /* Light text color for content */
+}
+
+/* Submenu Styling */
+.submenu {
+    display: none;
+    padding-left: 16px;
+}
+
+.submenu.open {
+    display: block;
+}
+
+/* Sidebar Icon Styling */
+.sidebar .menu i {
+    margin-right: 10px;
+}
+
+.submenu-toggle i {
+    transition: transform 0.3s ease;
+}
+
+.submenu-toggle.open i {
+    transform: rotate(180deg);
+}
+
+/* Card Styling for the Form */
+.card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+}
+
+/* Fix for content background color and full screen height */
+.content {
+    min-height: 100vh;
+    /* Ensure content section takes full height */
+    background-color: inherit;
+    /* Inherit background color */
+    color: inherit;
+    /* Inherit text color */
+}
+

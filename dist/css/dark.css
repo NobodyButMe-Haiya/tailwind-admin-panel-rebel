@@ -1,0 +1,142 @@
+
+/* Dark Mode Styles */
+.dark-mode {
+    background-color: #2d2d2d;
+    /* Dark background for the body */
+    color: #e0e0e0;
+    /* Light text color for body */
+}
+
+.dark-mode .sidebar {
+    background-color: #232323;
+    /* Dark sidebar */
+    color: #e0e0e0;
+}
+
+.dark-mode .sidebar a {
+    color: #b0b0b0;
+    /* Lighter links in the sidebar */
+}
+
+.dark-mode .sidebar a:hover {
+    background-color: #444;
+    /* Darker on hover */
+    color: #fff;
+}
+
+.dark-mode .form-input,
+.dark-mode .form-button {
+    background-color: #444;
+    /* Dark background for input and button */
+    color: #fff;
+    border-color: #555;
+    /* Darker border */
+}
+
+.dark-mode .form-input:focus {
+    border-color: #888;
+    /* Focused input border */
+}
+
+/* Dark Mode Card for Form */
+.dark-mode .card {
+    background-color: #444;
+    /* Dark background for card */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+    /* Darker shadow for card */
+}
+
+/* Header in Dark Mode */
+.dark-mode .header {
+    color: #ffffff;
+    /* White text in the header */
+}
+
+
+
+
+
+/* Dark Mode Text Fields (Do Not Change Background to White) */
+.dark-mode .form-input {
+    background-color: #444;
+    /* Keep dark background in dark mode */
+    border-color: #555;
+    /* Darker border in dark mode */
+}
+
+.dark-mode .form-input:focus {
+    background-color: #444;
+    /* Keep background dark when focused */
+    border-color: #888;
+    /* Lighter border on focus */
+}
+
+/* Dark Mode Styles for Grid Table */
+.dark-mode table {
+    background-color: #444;
+    /* Dark background for the table */
+    border-color: #555;
+    /* Border color for table */
+    color: #e0e0e0;
+    /* Text color for table */
+}
+
+.dark-mode tbody tr {
+    background-color: #333;
+}
+.dark-mode tbody tr:nth-child(even) {
+    background-color: #444; /* Tailwind's gray-100 */
+}
+
+.dark-mode table th {
+    background-color: #555;
+    /* Darker background for table headers */
+    color: #e0e0e0;
+    /* Light text color for headers */
+    border-color: #666;
+    /* Darker border for headers */
+}
+
+.dark-mode table td {
+    /* Dark background for table cells */
+    color: #e0e0e0;
+    /* Light text color for cells */
+    border-color: #555;
+    /* Border color for cells */
+}
+
+.dark-mode table tbody tr:hover {
+    background-color: #555;
+    /* Highlighted row in dark mode */
+}
+
+/* Dark Mode for Input Fields in Grid */
+.dark-mode input[type="text"] {
+    background-color: #444;
+    /* Dark background for input */
+    color: #e0e0e0;
+    /* Light text for input */
+    border: 1px solid #555;
+    /* Darker border for input */
+}
+
+.dark-mode input[type="text"]:focus {
+    border-color: #888;
+    /* Focus border in dark mode */
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+    /* Focus shadow */
+}
+
+/* Dark Mode for Buttons in Grid */
+
+
+.dark-mode button:hover {
+    background-color: #666;
+    /* Lighter button background on hover */
+}
+
+/* Dark Mode Empty State Text */
+.dark-mode td.text-gray-500 {
+    color: #888;
+    /* Subdued text color for empty state */
+}
