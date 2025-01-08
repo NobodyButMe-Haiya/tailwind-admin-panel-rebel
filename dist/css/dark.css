@@ -6,7 +6,9 @@
     color: #e0e0e0;
     /* Light text color for body */
 }
-
+.dark-mode .toggleIcon {
+    color: #e0e0e0;
+}
 .dark-mode .sidebar {
     background-color: #232323;
     /* Dark sidebar */
@@ -139,4 +141,10 @@
 .dark-mode td.text-gray-500 {
     color: #888;
     /* Subdued text color for empty state */
+}
+.dark-mode .content {
+    background-color: #333;
+    /* Dark background for content */
+    color: #e0e0e0;
+    /* Light text color for content */
 }

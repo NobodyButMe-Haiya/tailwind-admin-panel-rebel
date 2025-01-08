@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dark Mode Toggle with Sidebar</title>
+  <link rel="stylesheet" href="../dist/css/main.css">
+  <link rel="stylesheet" href="../dist/css/dark.css">
+  <link rel="stylesheet" href="../dist/css/output.css">
+  <!-- Boxicons CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet">
+</head>
+
+<body>
+ 
+    <!-- Sidebar -->
+    <div id="sidebar" class="sidebar w-64 h-screen fixed top-0 left-0 z-10">
+      <div class="flex justify-between items-center py-6 px-4">
+        <span class="text-2xl font-bold text-indigo-700">Rebels</span>
+        <!-- Dark Mode Toggle Button -->
+        <button id="dark-mode-toggle"
+          class="p-2 bg-transparent hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-md">
+          <span id="dark-mode-icon">🌙</span>
+        </button>
+      </div>
+
+      <div class="px-4 py-6">
+        <a href="dashboard.html" class="block py-2 px-4 hover:bg-blue-300 rounded-md">
+          <i class="bx bx-home"></i> Dashboard
+        </a>
+
+        <!-- Users Menu with Submenus -->
+        <div class="menu">
+          <button class="block w-full py-2 px-4 text-left hover:bg-blue-300 rounded-md submenu-toggle">
+            <i class="bx bx-user"></i> Users <i class="bx bx-chevron-down float-right"></i>
+          </button>
+          <div class="submenu">
+            <a href="#" class="block py-2 px-4 hover:bg-indigo-500 rounded-md">User List</a>
+            <a href="#" class="block py-2 px-4 hover:bg-indigo-500 rounded-md">Add User</a>
+
+            <!-- Nested Submenu -->
+            <button class="block w-full py-2 px-4 text-left hover:bg-indigo-500 rounded-md submenu-toggle">
+              <i class="bx bx-lock"></i> Roles <i class="bx bx-chevron-down float-right"></i>
+            </button>
+            <div class="submenu">
+              <a href="#" class="block py-2 px-4 hover:bg-indigo-400 rounded-md">Admin</a>
+              <a href="#" class="block py-2 px-4 hover:bg-indigo-400 rounded-md">Editor</a>
+              <a href="#" class="block py-2 px-4 hover:bg-indigo-400 rounded-md">Viewer</a>
+            </div>
+          </div>
+        </div>
+
+        <a href="setting.html" class="block py-2 px-4 hover:bg-blue-300 rounded-md">
+          <i class="bx bx-cog"></i> Settings
+        </a>
+        <a href="#" class="block py-2 px-4 hover:bg-blue-300 rounded-md">
+          <i class="bx bx-log-out"></i> Logout
+        </a>
+      </div>
+    </div>
+
+    <!-- Main Content Area -->
+    <div id="content" class="ml-64 p-8 content">
+      <button id="toggleSidebar"
+            class="p-2 bg-transparent hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-md">
+            <i id="toggleIcon" class="bx bx-menu text-2xl toggleIcon"></i>
+        </button>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <!-- Quick Actions -->
+            <div class="card">
+                <h2 class="font-semibold text-lg mb-2">Quick Actions</h2>
+                <button class="bg-blue-500 text-white px-4 py-2 rounded w-full mb-2 flex items-center justify-center">
+                    <i class="bx bx-edit-alt mr-2"></i> Create New Entry
+                </button>
+                <button class="bg-gray-500 text-white px-4 py-2 rounded w-full flex items-center justify-center">
+                    <i class="bx bx-list-check mr-2"></i> Manage Entries
+                </button>
+            </div>
+        
+            <!-- Pending Tasks (Grid) -->
+            <div class="card">
+                <h2 class="font-semibold text-lg mb-2">Pending Tasks</h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                    <a href="#" class="block bg-yellow-100 p-4 rounded shadow flex items-center">
+                        <i class="bx bx-check-circle text-yellow-500 mr-4 text-3xl"></i>
+                        <div>
+                            <h4 class="text-lg font-semibold">Invoice #1234</h4>
+                            <p class="text-sm">Awaiting approval</p>
+                        </div>
+                    </a>
+                    <a href="#" class="block bg-yellow-100 p-4 rounded shadow flex items-center">
+                        <i class="bx bx-loader text-orange-500 mr-4 text-3xl"></i>
+                        <div>
+                            <h4 class="text-lg font-semibold">Order #4567</h4>
+                            <p class="text-sm">Pending entry</p>
+                        </div>
+                    </a>
+                    <a href="#" class="block bg-orange-100 p-4 rounded shadow flex items-center">
+                        <i class="bx bx-truck text-orange-500 mr-4 text-3xl"></i>
+                        <div>
+                            <h4 class="text-lg font-semibold">Delivery #7890</h4>
+                            <p class="text-sm">Awaiting dispatch</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        
+            <!-- Today's Entries (Table) -->
+            <div class="card">
+                <h2 class="font-semibold text-lg mb-2">Today's Entries</h2>
+                <table class="w-full text-sm text-gray-700">
+                    <thead>
+                        <tr>
+                            <th class="p-2">ID</th>
+                            <th class="p-2">Name</th>
+                            <th class="p-2">Status</th>
+                            <th class="p-2">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="p-2">#7890</td>
+                            <td class="p-2">Order</td>
+                            <td class="p-2 text-green-500">Completed</td>
+                            <td class="p-2 text-center"><a href="#" class="text-blue-500">
+                              <i class="bx bx-search-alt"></i></a></td>
+                        </tr>
+                        <tr>
+                            <td class="p-2">#1122</td>
+                            <td class="p-2">Invoice</td>
+                            <td class="p-2 text-yellow-500">Pending</td>
+                            <td class="p-2 text-center"><a href="#" class="text-blue-500">
+                              <i class="bx bx-search-alt"></i></a></td>
+                        </tr>
+                        <tr>
+                            <td class="p-2">#5432</td>
+                            <td class="p-2">Delivery</td>
+                            <td class="p-2 text-green-500">Completed</td>
+                            <td class="p-2 text-center"><a href="#" class="text-blue-500">
+                              <i class="bx bx-search-alt"></i></a></td>
+                        </tr>
+                        <tr>
+                            <td class="p-2">#1001</td>
+                            <td class="p-2">Order</td>
+                            <td class="p-2 text-yellow-500">In Progress</td>
+                            <td class="p-2 text-center"><a href="#" class="text-blue-500">
+                              <i class="bx bx-search-alt"></i></a></td>
+                        </tr>
+                        <tr>
+                            <td class="p-2">#5643</td>
+                            <td class="p-2">Invoice</td>
+                            <td class="p-2 text-yellow-500">Pending</td>
+                            <td class="p-2 text-center"><a href="#" class="text-blue-500">
+                              <i class="bx bx-search-alt"></i></a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <br />
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <!-- Invoices Section -->
+            <div class="card">
+                <h2 class="font-semibold text-lg mb-2">Invoices</h2>
+                <table class="w-full text-sm text-gray-700">
+                    <thead>
+                        <tr>
+                            <th class="py-2">Invoice ID</th>
+                            <th class="py-2">Amount</th>
+                            <th class="py-2">Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="py-2">#1122</td>
+                            <td class="py-2">$350.00</td>
+                            <td class="py-2 text-yellow-500">Pending</td>
+                        </tr>
+                        <tr>
+                            <td class="py-2">#5643</td>
+                            <td class="py-2">$450.00</td>
+                            <td class="py-2 text-yellow-500">Pending</td>
+                        </tr>
+                        <tr>
+                            <td class="py-2">#8964</td>
+                            <td class="py-2">$220.00</td>
+                            <td class="py-2 text-green-500">Paid</td>
+                        </tr>
+                        <tr>
+                            <td class="py-2">#3456</td>
+                            <td class="py-2">$500.00</td>
+                            <td class="py-2 text-red-500">Overdue</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        
+            <!-- Orders Section -->
+            <div class="card">
+                <h2 class="font-semibold text-lg mb-2">Orders</h2>
+                <table class="w-full text-sm text-gray-700">
+                    <thead>
+                        <tr>
+                            <th class="py-2">Order ID</th>
+                            <th class="py-2">Customer</th>
+                            <th class="py-2">Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="py-2">#1001</td>
+                            <td class="py-2">John Doe</td>
+                            <td class="py-2 text-yellow-500">In Progress</td>
+                        </tr>
+                        <tr>
+                            <td class="py-2">#1234</td>
+                            <td class="py-2">Alice Smith</td>
+                            <td class="py-2 text-green-500">Completed</td>
+                        </tr>
+                        <tr>
+                            <td class="py-2">#5678</td>
+                            <td class="py-2">Bob Johnson</td>
+                            <td class="py-2 text-green-500">Completed</td>
+                        </tr>
+                        <tr>
+                            <td class="py-2">#9101</td>
+                            <td class="py-2">Charlie Brown</td>
+                            <td class="py-2 text-red-500">Cancelled</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <br />
+        <!-- Help and Support Section -->
+        <div class="card">
+            <h2 class="font-semibold text-lg mb-2">Help & Support</h2>
+            <p class="text-sm">Need assistance? Please visit our <a href="#" class="text-blue-500">Help Center</a> or contact support at <a href="mailto:support@example.com" class="text-blue-500">support@example.com</a>.</p>
+        </div>
+        
+      
+    </div>
+  
+  <script src="../dist/js/main.js"></script>
+</body>
+
+</html>

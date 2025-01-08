@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dark Mode Toggle with Sidebar</title>
+    <link rel="stylesheet" href="../dist/css/main.css">
+    <link rel="stylesheet" href="../dist/css/dark.css">
+    <link rel="stylesheet" href="../dist/css/output.css">
+    <!-- Boxicons CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet">
+    <style>
+
+    </style>
+</head>
+
+<body class="bg-gray-100">
+
+    <!-- Sidebar -->
+    <div id="sidebar" class="sidebar w-64 h-screen fixed top-0 left-0 z-10">
+        <div class="flex justify-between items-center py-6 px-4">
+            <span class="text-2xl font-bold text-indigo-700">Rebels</span>
+            <!-- Dark Mode Toggle Button -->
+            <button id="dark-mode-toggle"
+                class="p-2 bg-transparent hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-md">
+                <span id="dark-mode-icon">🌙</span>
+            </button>
+        </div>
+
+        <div class="px-4 py-6">
+            <a href="dashboard.html" class="block py-2 px-4 hover:bg-blue-300 rounded-md">
+                <i class="bx bx-home"></i> Dashboard
+            </a>
+
+            <!-- Users Menu with Submenus -->
+            <div class="menu">
+                <button class="block w-full py-2 px-4 text-left hover:bg-blue-300 rounded-md submenu-toggle">
+                    <i class="bx bx-user"></i> Administrator <i class="bx bx-chevron-down float-right"></i>
+                </button>
+                <div class="submenu">
+                    <!-- Nested Submenu -->
+                    <button class="block w-full py-2 px-4 text-left hover:bg-indigo-500 rounded-md submenu-toggle">
+                        <i class="bx bx-lock"></i> User <i class="bx bx-chevron-down float-right"></i>
+                    </button>
+                    <div class="submenu">
+                        <a href="user.html" class="block py-2 px-4 hover:bg-indigo-400 rounded-md">User Listing</a>
+                        <a href="addUser.html" class="block py-2 px-4 hover:bg-indigo-400 rounded-md">User Form</a>
+                    </div>
+                    <!-- Nested Submenu -->
+                    <button class="block w-full py-2 px-4 text-left hover:bg-indigo-500 rounded-md submenu-toggle">
+                        <i class="bx bx-lock"></i> Setting <i class="bx bx-chevron-down float-right"></i>
+                    </button>
+                    <div class="submenu">
+                        <a href="user.html" class="block py-2 px-4 hover:bg-indigo-400 rounded-md">Language</a>
+                        <a href="user.html" class="block py-2 px-4 hover:bg-indigo-400 rounded-md">Country</a>
+                        <a href="user.html" class="block py-2 px-4 hover:bg-indigo-400 rounded-md">State</a>
+                    </div>
+                </div>
+            </div>
+
+            <a href="setting.html" class="block py-2 px-4 hover:bg-blue-300 rounded-md">
+                <i class="bx bx-cog"></i> Settings
+            </a>
+            <a href="#" class="block py-2 px-4 hover:bg-blue-300 rounded-md">
+                <i class="bx bx-log-out"></i> Logout
+            </a>
+        </div>
+    </div>
+
+    <!-- Main Content Area -->
+    <div id="content" class="ml-64 p-8 content">
+        <button id="toggleSidebar"
+            class="p-2 bg-transparent hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-md">
+            <i id="toggleIcon" class="bx bx-menu text-2xl  toggleIcon"></i>
+        </button>
+        <div class="mb-4 flex justify-between items-center">
+            <h1 class="text-3xl font-bold header">Grid Form</h1>
+            <!-- may add later -->
+        </div>
+        <div class="card">
+            <form>
+                <div class="space-y-8">
+                    <!-- Company Name -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
+                        <div>
+                            <label for="company-name"
+                                class="block text-sm form-label">
+                                <i class="bx bx-building-house text-xl mr-3"></i> Company Name
+                            </label>
+                            <input id="company-name" type="text"
+                                class="mt-2 p-3 w-full form-input rounded-md"
+                                placeholder="Enter your company name">
+                        </div>
+                        <!-- Company Website -->
+                        <div>
+                            <label for="company-website"
+                                class="block text-sm form-label">
+                                <i class="bx bx-globe text-xl mr-3"></i> Website
+                            </label>
+                            <input id="company-website" type="url"
+                                class="mt-2 p-3 w-full form-input rounded-md"
+                                placeholder="https://yourcompany.com">
+                        </div>
+                    </div>
+
+                    <!-- Company Address -->
+                    <div>
+                        <label for="company-address"
+                            class="block text-sm form-label">
+                            <i class="bx bx-map text-xl mr-3"></i> Company Address
+                        </label>
+                        <textarea id="company-address"
+                            class="mt-2 p-3 w-full form-input rounded-md"
+                            rows="6" placeholder="Enter your company address"></textarea>
+                    </div>
+
+                    <!-- Contact Email -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
+                        <div>
+                            <label for="contact-email"
+                                class="block text-sm form-label">
+                                <i class="bx bx-envelope text-xl mr-3"></i> Contact Email
+                            </label>
+                            <input id="contact-email" type="email"
+                                class="mt-2 p-3 w-full form-input rounded-md"
+                                placeholder="contact@yourcompany.com">
+                        </div>
+                        <!-- Contact Phone -->
+                        <div>
+                            <label for="contact-phone"
+                                class="block text-sm form-label">
+                                <i class="bx bx-phone text-xl mr-3"></i> Contact Phone
+                            </label>
+                            <input id="contact-phone" type="tel"
+                                class="mt-2 p-3 w-full form-input rounded-md"
+                                placeholder="+1 (123) 456-7890">
+                        </div>
+                    </div>
+
+                    <!-- Social Media Links -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
+                        <div>
+                            <label for="social-facebook"
+                                class="block text-sm form-label">
+                                <i class="bx bxl-facebook text-xl mr-3"></i> Facebook URL
+                            </label>
+                            <input id="social-facebook" type="url"
+                                class="mt-2 p-3 w-full form-input rounded-md"
+                                placeholder="https://facebook.com/yourcompany">
+                        </div>
+                        <div>
+                            <label for="social-twitter"
+                                class="block text-sm form-label">
+                                <i class="bx bxl-twitter text-xl mr-3"></i> Twitter URL
+                            </label>
+                            <input id="social-twitter" type="url"
+                                class="mt-2 p-3 w-full form-input rounded-md"
+                                placeholder="https://twitter.com/yourcompany">
+                        </div>
+                    </div>
+
+                    <!-- Save Button -->
+                    <div class="flex justify-end mt-6">
+                        <button type="submit"
+                            class="bg-indigo-600 text-white py-2 px-4 rounded-md hover:bg-indigo-700 form-button">
+                            <i class="bx bx-save text-xl mr-3"></i> Save Changes
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+    </div>
+    <script src="../dist/js/main.js"></script>
+</body>
+
+</html>

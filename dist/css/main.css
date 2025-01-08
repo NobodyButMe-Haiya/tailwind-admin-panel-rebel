@@ -5,19 +5,25 @@ html, body {
 }
 body,
 .content {
+   
     transition: background-color 0.3s ease, color 0.3s ease;
 }
-body, #content {
+body {
     overflow: hidden;
+}
+
+/* Remove overflow hidden from #content */
+#content {
     position: relative;
 }
+
+/* Modify content to allow scroll when necessary */
 .content {
     top: 0;
     transition: margin-left 0.3s ease-in-out;
-}
-.sidebar {
-    width: 16rem; 
-    transition: transform 0.3s ease-in-out;
+    overflow: auto; /* Ensures scrolling when content overflows */
+    max-height: 100vh; /* Ensures content doesn't exceed the viewport height */
+    max-width: 100%;  /* Ensures content doesn't exceed the viewport width */
 }
 
 /* Text Fields in Non-Dark Mode */
@@ -49,8 +55,11 @@ tbody tr:nth-child(even) {
 
 /* Light Mode Styles (Default) */
 .sidebar {
-    background-color: #fff;
-    color: #333;
+    width: 16rem; 
+    background-color: #f9f9f9;
+    transition: transform 0.3s ease-in-out;
+    height: 100vh; /* Makes the sidebar take up the full height of the viewport */
+    overflow-y: auto; /* Adds vertical scroll when content exceeds the height */
 }
 
 .sidebar a {
@@ -63,12 +72,6 @@ tbody tr:nth-child(even) {
 }
 
 /* Adjusted background for content area in dark mode */
-.dark-mode .content {
-    background-color: #333;
-    /* Dark background for content */
-    color: #e0e0e0;
-    /* Light text color for content */
-}
 
 /* Submenu Styling */
 .submenu {
@@ -95,7 +98,7 @@ tbody tr:nth-child(even) {
 
 /* Card Styling for the Form */
 .card {
-    background-color: #fff;
+    background-color: #f9fafb;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     padding: 2rem;
@@ -111,3 +114,8 @@ tbody tr:nth-child(even) {
     /* Inherit text color */
 }
 
+    select {
+        -webkit-appearance: none; /* Remove default Safari appearance */
+        -moz-appearance: none;
+        appearance: none;
+    }

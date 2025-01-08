@@ -7,6 +7,7 @@ darkModeToggle.addEventListener("click", () => {
 });
 
 const submenuToggles = document.querySelectorAll(".submenu-toggle");
+const toggleIcon = document.getElementById("toggleIcon");
 submenuToggles.forEach(toggle => {
     toggle.addEventListener("click", () => {
         toggle.classList.toggle("open");
@@ -32,3 +33,4 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 });
+
